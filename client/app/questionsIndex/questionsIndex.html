@@ -9,15 +9,15 @@
 <div class="container" infinite-scroll='nextPage()' infinite-scroll-disabled='busy || noMoreData'>
   <br/>
   <div style="text-align: center">
-    <a type="button" class="btn btn-primary" href="/questions/create">Ask Question</a>
+    <a type="button" class="btn btn-primary" href="/questions/create">Fai una domanda</a>
   </div>
 
   <table class="table table-striped">
     <thead>
       <tr>
-        <th width="20">Stars</th>
-        <th width="20">Answers</th>
-        <th>Question</th>
+        <th width="20">Stelle</th>
+        <th width="20">Risposte</th>
+        <th>Domanda</th>
       </tr>
     </thead>
     <tbody>
@@ -36,7 +36,7 @@
           <a ng-href="/questions/show/{{question._id}}" style="font-size: large">{{question.title}}</a>
           <div class="clearfix"></div>
           <div style="float: right;">
-            by <a ng-href="/users/{{question.user._id}}">{{question.user.name}}</a>
+            da <a ng-href="/users/{{question.user._id}}">{{question.user.name}}</a>
              - {{question.createdAt|fromNow}}
           </div>
           <div>

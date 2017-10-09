@@ -5,6 +5,7 @@ var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 var QuestionSchema = new mongoose.Schema({
   title: String,
   content: String,
+  slug: String,
   answers: [{
     content: String,
     user: {
@@ -85,6 +86,7 @@ QuestionSchema.pre('findOne', function(next){
 QuestionSchema.index({
   'title': 'text',
   'content': 'text',
+  'slug': 'text',
   'tags.text': 'text',
   'answers.content': 'text',
   'comments.content': 'text',

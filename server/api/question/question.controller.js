@@ -86,6 +86,7 @@ export function show(req, res) {
 
 // Creates a new Question in the DB
 export function create(req, res) {
+    console.log(req.body);
   req.body.user = req.user;
   Question.createAsync(req.body)
     .then(respondWithResult(res, 201))

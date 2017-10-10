@@ -10,7 +10,9 @@
 'use strict';
 
 import _ from 'lodash';
+
 import Question from './question.model';
+var slug = require('slug')
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -86,8 +88,9 @@ export function show(req, res) {
 
 // Creates a new Question in the DB
 export function create(req, res) {
-    console.log(req.body);
+  req.body.slug = slug(req.body.title);
   req.body.user = req.user;
+  console.log(req.body);
   Question.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));

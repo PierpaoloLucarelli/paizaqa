@@ -18,20 +18,4 @@ angular.module('paizaqaApp')
      	}
     });
 
-    //Transition hooks
-	// $transitionsProvider.onBefore({
-	// 	to: 'questionsShow',
-	// 		}, transition => {
-
-	//     		//Get params
-	// 			const params = transition.params();
-
-	//     		//Must have token param
-	// 			if (!params.slug || !params.id) {
- //  					return transition.router.stateService.target('error', {
- //    					type: 'page-not-found',
- //  					});
-	// 			}
-	//     });
-
   });

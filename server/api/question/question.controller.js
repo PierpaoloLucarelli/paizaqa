@@ -54,6 +54,17 @@ function handleEntityNotFound(res) {
   };
 }
 
+function checkSlug(slug,res) {
+  return function(entity) {
+    console.log(slug + " " + entity.slug);
+    if(slug != entity.slug){
+      res.status(404).end();
+      return null;
+    }
+    return entity;
+  };
+}
+
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
   return function(err) {
@@ -80,16 +91,9 @@ export function index(req, res) {
 
 // Gets a single Question from the DB
 export function show(req, res) {
-  console.log("getting");
   Question.findByIdAsync(req.params.id)
+    .then(checkSlug(req.params.slug, res))
     .then(handleEntityNotFound(res))
-    .then(respondWithResult(res))
-    .catch(handleError(res));
-}
-
-// return the slug by id
-export function getSlug(req,res){
-  Question.findByIdAsync(req.params.id, 'slug')
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

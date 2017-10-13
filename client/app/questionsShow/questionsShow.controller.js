@@ -7,9 +7,11 @@ angular.module('paizaqaApp')
     }
 
     var loadQuestions = function(){
-      console.log('loading');
       $http.get('/api/questions/' + $stateParams.id + "/" +$stateParams.slug).success(function(question) {
+        
         $scope.question = question;
+      }).error(function(){
+        $location.path("/");
       });
     };
     loadQuestions();

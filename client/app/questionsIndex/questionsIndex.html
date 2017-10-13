@@ -33,7 +33,7 @@
             <span ng-if=" isStar(question)" class="glyphicon glyphicon-star" style="color: #CF7C00;" ></span>
             <span ng-if="!isStar(question)" class="glyphicon glyphicon-star-empty"></span>
           </div>
-          <a ng-href="/questions/show/{{question._id}}" style="font-size: large">{{question.title}}</a>
+          <a ng-href="/questions/show/{{question._id}}/{{question.slug}}" style="font-size: large">{{question.title}}</a>
           <div class="clearfix"></div>
           <div style="float: right;">
             da <a ng-href="/users/{{question.user._id}}">{{question.user.name}}</a>

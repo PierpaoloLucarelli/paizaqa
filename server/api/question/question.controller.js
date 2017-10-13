@@ -80,8 +80,16 @@ export function index(req, res) {
 
 // Gets a single Question from the DB
 export function show(req, res) {
+  console.log("getting");
   Question.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+// return the slug by id
+export function getSlug(req,res){
+  Question.findByIdAsync(req.params.id, 'slug')
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
@@ -90,7 +98,6 @@ export function show(req, res) {
 export function create(req, res) {
   req.body.slug = slug(req.body.title);
   req.body.user = req.user;
-  console.log(req.body);
   Question.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));

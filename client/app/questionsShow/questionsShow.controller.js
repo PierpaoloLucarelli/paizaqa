@@ -2,8 +2,13 @@
 
 angular.module('paizaqaApp')
   .controller('QuestionsShowCtrl', function ($scope, $http, $stateParams, Auth, $location) {
+    if(!$stateParams.slug){
+      $location.path("/");
+    }
+
     var loadQuestions = function(){
-      $http.get('/api/questions/' + $stateParams.id).success(function(question) {
+      console.log('loading');
+      $http.get('/api/questions/' + $stateParams.id + "/" +$stateParams.slug).success(function(question) {
         $scope.question = question;
       });
     };
